@@ -1,0 +1,4 @@
+- source: seminario.qmd
+  quarto-pub:
+    - id: eb7bce29-9c6a-4bfe-b9ca-60821936e688
+      url: 'https://quartopub.com/sites/rmhirota/diagnostico-de-modelos-mistos'

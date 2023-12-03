@@ -1,0 +1,41 @@
+---
+title: "Modelos Mistos e Aplicações - Lista 2"
+subtitle: "Renata Hirota"
+format: pdf
+---
+
+## Propriedades de estimadores de máxima verossimilhança
+
+### Amostras pequenas
+
+O estimador de máxima verossimilhança (ML) para o coeficiente de efeitos fixos 
+$\beta$ é não-viesado em pequenas amostras.
+
+Os parâmetros de variância em um modelo de crescimento aleatório balanceado 
+também são não-viesados.
+
+#### Coeficientes de efeitos fixos
+
+- O estimador de mínimos quadrados ordinários (OLS) é não-viesado em um modelo de regressão linear.
+- O estimador de mínimos quadrados generalizados (GLS) é imparcial se a matriz de variância-covariância for conhecida (Kackar e Harville, 1984; Kenward e Roger. 1997).
+- O estimador de mínimos quadrados generalizados estimado (EGLS), que usa uma matriz de variância-covariância estimada, também é imparcial em pequenas amostras.
+
+#### Parâmetros de variância
+
+- Os estimadores de máxima verossimilhança dos parâmetros de variância $\sigma$ e $D$ são geralmente viesados.
+- Os estimadores de máxima verossimilhança restrita (RML) dos parâmetros de variância são não-viesados em um modelo balanceado.
+- Os estimadores RML são não-viesados para modelos mistos de coeficientes aleatórios balanceados.
+
+As propriedades de pequenas amostras dos estimadores em modelos de efeitos mistos lineares são importantes para determinar a confiabilidade dos resultados da análise. No geral, os estimadores ML são não-viesados em pequenas amostras, mas os estimadores de máxima verossimilhança restrita (RML) para parâmetros de variância são não-viesados apenas em modelos balanceados.
+
+
+### Amostras grandes
+
+- As estimativas de máxima verossimilhança (MLE) para os parâmetros beta ($\beta$) e variância ($\sigma^2$, $D$) são assintoticamente independentes.
+- A função de log-verossimilhança pode ser maximizada separadamente para ($\beta$) e ($\sigma^2$, $D$) devido à matriz Hessiana diagonal em blocos.
+- Usando qualquer estimativa consistente de $D$ com mínimos quadrados generalizados gera um estimador eficiente de $\beta$.
+- As matrizes $X$ e $Z$ podem ser consideradas como fixas (esquema determinístico) ou aleatórias (esquema estocástico). No esquema determinístico, os elementos da matriz são limitadas e a existencia de limites da matriz é assumida. No esquema estocástico, $X$ e $Z$ são iid, permitindo a aplicação da teoria de máxima verossimilhança.
+- Embora aumentar o número de observações por indivíduo melhore as estimativas, é mais importante ter o maior número possível de sujeitos (N). Isso ocorre porque a matriz de variância é aproximadamente igual a $\sigma^2 D$ quando N é grande.
+- ML e RML são equivalentes assintoticamente, ou seja, fornecem estimativas próximas quando o número de observações é relativamente grande.
+
+

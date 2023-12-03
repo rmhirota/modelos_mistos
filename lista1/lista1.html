@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.335">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Modelos Mistos e Aplicações - Lista 1</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="lista1_files/libs/clipboard/clipboard.min.js"></script>
+<script src="lista1_files/libs/quarto-html/quarto.js"></script>
+<script src="lista1_files/libs/quarto-html/popper.min.js"></script>
+<script src="lista1_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="lista1_files/libs/quarto-html/anchor.min.js"></script>
+<link href="lista1_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="lista1_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="lista1_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="lista1_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="lista1_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Modelos Mistos e Aplicações - Lista 1</h1>
+<p class="subtitle lead">Renata Hirota</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="prove-que-a-estatística-f-do-anova-tem-distribuição-f" class="level3">
+<h3 class="anchored" data-anchor-id="prove-que-a-estatística-f-do-anova-tem-distribuição-f">1. Prove que a estatística F do ANOVA tem distribuição F</h3>
+<p>Um variável aleatória Y tem distribuição <span class="math inline">\(F_{d_1, d_2}\)</span> se</p>
+<p><span class="math display">\[
+Y = \frac{X_1/d_1}{X_2/d_2}
+\]</span></p>
+<p>onde <span class="math inline">\(X_1 \sim \chi^2_{d_1}\)</span> e <span class="math inline">\(X_2 \sim \chi^2_{d_2}\)</span> são independentes.</p>
+<p>Na ANOVA, a estatística F é definida como</p>
+<p><span class="math display">\[
+\frac{QMA}{QME}, \quad QMA = SQA/(t-1), QME = SQE/(N-t)
+\]</span></p>
+<p><span class="math inline">\(SQA = \sum_{i=1}^t n(\bar{Y}_{i.} - \bar{Y}_{..})^2\)</span>, ou seja, soma de quadrados de uma diferença de normais. Dividido por <span class="math inline">\((t-1)\)</span>, a quantidade de elementos somados, temos uma variável com distribuição qui-quadrado,</p>
+<p><span class="math display">\[
+QMA \sim \chi^2_{(t-1)}
+\]</span></p>
+<p>O equivalente pode ser dito de SQE e QME, já que SQE é</p>
+<p><span class="math display">\[
+\sum_{i=1}^{t}\sum_{j=1}^n (Y_{ij} - \bar{Y}_{i.})^2
+\]</span></p>
+<p>Logo, <span class="math inline">\(QME \sim \chi^2_{(N-t)}\)</span></p>
+<p>Como QME e QMA são independentes, temos que <span class="math inline">\(F \sim F_{t-1, N-t}\)</span></p>
+</section>
+<section id="mle-para-d" class="level3">
+<h3 class="anchored" data-anchor-id="mle-para-d">2. MLE para d</h3>
+<p>Para obter a estimativa de máxima verossimilhança (MLE) para a componente aleatória em um modelo de efeitos mistos, maximizamos a função de verossimilhança condicional.</p>
+<p>Dado o modelo</p>
+<p><span class="math display">\[
+Y_{ij} = \beta_0 + b_i + \epsilon_{ij}
+\]</span></p>
+<p>onde</p>
+<ul>
+<li><span class="math inline">\(Y_{ij}\)</span> é a observação para o j-ésimo sujeito no i-ésimo nível do tratamento,</li>
+<li><span class="math inline">\(\beta_0\)</span> é o efeito fixo do intercepto,</li>
+<li><span class="math inline">\(b_i\)</span> é a componente aleatória associada ao i-ésimo tratamento,</li>
+<li><span class="math inline">\(\epsilon_{ij}\)</span> é o erro aleatório associado à observação <span class="math inline">\(Y_{ij}\)</span>.</li>
+</ul>
+<p>A função de verossimilhança condicional <span class="math inline">\(L(\theta | Y)\)</span> é definida como a probabilidade conjunta das observações <span class="math inline">\(Y_{ij}\)</span>, dadas as estimativas dos parâmetros <span class="math inline">\(\theta\)</span> (que incluem os efeitos fixos e a variância da componente aleatória)</p>
+<p><span class="math display">\[
+L(\theta|Y) = \prod{(Y_{11}, Y_{12}, ..., Y_{ij} | \theta)}
+\]</span> <span class="math display">\[
+ln(L(\theta|Y)) = \sum{[ln(f(Y_ij | θ))]}
+\]</span></p>
+<p><span class="math display">\[
+\frac{\partial{[ln(L(\theta|Y))]}}{\partial{(\sigma^2_b)}} = 0
+\]</span></p>
+</section>
+<section id="sejam-duas-variáveis-aleatórias-g-e-y.-prove-que-varg-pode-ser-escrita-como-a-soma-da-esperança-condicional-e-variância-condicional-de-y" class="level3">
+<h3 class="anchored" data-anchor-id="sejam-duas-variáveis-aleatórias-g-e-y.-prove-que-varg-pode-ser-escrita-como-a-soma-da-esperança-condicional-e-variância-condicional-de-y">3. Sejam duas variáveis aleatórias G e Y. Prove que Var(G) pode ser escrita como a soma da esperança condicional e variância condicional de Y</h3>
+<p>Podemos definir a variância de G como</p>
+<p><span class="math display">\[
+Var(G) = E[(G - E[G])^2]
+\]</span></p>
+<p>Pela esperança condicional, temos</p>
+<p><span class="math display">\[
+Var(G) = E[(E[G | Y] + (G - E[G]))^2]
+\]</span> <span class="math display">\[
+Var(G) = E[E[G | Y]^2 + 2(E[G | Y])(G - E[G]) + (G - E[G])^2]
+\]</span></p>
+<p><span class="math display">\[
+Var(G) = E[E[G | Y]^2] + 2E[(E[G | Y])(G - E[G])] + E[(G - E[G])^2]
+\]</span></p>
+<p><span class="math display">\[
+Var(G) = E[E[G | Y]^2] + 2E[(E[G | Y])(G - E[G])] + E[(G - E[G])^2]
+\]</span></p>
+<p>O segundo termo é a esperança do produto da esperança condicional <span class="math inline">\(E[G | Y]\)</span> com a diferença <span class="math inline">\((G - E[G])\)</span>, o que é igual a zero, pois a esperança condicional de G é uma função de Y. Portanto, esse termo se reduz a zero:</p>
+<p><span class="math display">\[
+Var(G) = E[E[G | Y]^2] + E[(G - E[G])^2]
+\]</span></p>
+<p>Então,</p>
+<p><span class="math display">\[
+Var(G) = E[Var(G | Y)] + Var(E[G | Y])
+\]</span></p>
+</section>
+<section id="prt" class="level3">
+<h3 class="anchored" data-anchor-id="prt">5. PRT</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>dados <span class="ot">&lt;-</span> nlmeU<span class="sc">::</span>prt.fiber <span class="sc">|&gt;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(fiber.f <span class="sc">==</span> <span class="st">"Type 2"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">inner_join</span>(nlmeU<span class="sc">::</span>prt.subjects, <span class="st">"id"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Vamos considerar como efeitos aleatórios os participantes, com as seguintes variáveis associadas a eles:</p>
+<p>Participante (<code>id</code>):</p>
+<ul>
+<li>Sexo (<code>sex.f</code>)</li>
+<li>Idade (<code>age.f</code>)</li>
+<li>IMC (<code>bmi</code>)</li>
+</ul>
+<p>Consideraremos como efeito fixo:</p>
+<ul>
+<li>Intensidade do treinamento (<code>prt.f</code>)</li>
+<li>Ocasião (<code>occ.f</code>)</li>
+</ul>
+<p>A variável resposta é a medida de força específica da fibra muscular (<code>spec.fo</code>)</p>
+<section id="modelo" class="level5">
+<h5 class="anchored" data-anchor-id="modelo">Modelo</h5>
+<p><span class="math display">\[
+Y = XB + ZU + E
+\]</span></p>
+<ul>
+<li><span class="math inline">\(Y\)</span> é um vetor de observações da variável de resposta <code>spec.fo</code></li>
+<li><span class="math inline">\(X\)</span> é a matriz de covariáveis fixas, incluindo um vetor de uns para o intercepto e as covariáveis <code>prt.f</code>, <code>age.f</code>, <code>sex.f</code>, <code>bmi</code> e <code>occ.f</code>.</li>
+<li><span class="math inline">\(B\)</span> é um vetor de coeficientes correspondentes às covariáveis fixas, incluindo o intercepto.</li>
+<li><span class="math inline">\(Z\)</span> é a matriz de desenho do efeito aleatório, que contém um vetor de uns para a unidade de agrupamento <span class="math inline">\(i\)</span></li>
+<li><span class="math inline">\(U\)</span> é um vetor de efeitos aleatórios <span class="math inline">\(u_i\)</span> associados a cada unidade de agrupamento (<code>id</code>), modelado como <span class="math inline">\(u_i \sim N(0, \sigma^2_u)\)</span></li>
+<li><span class="math inline">\(E\)</span> é um vetor de erros residuais <span class="math inline">\(\epsilon_{ij}\)</span> para cada observação, modelado como <span class="math inline">\(\epsilon_{ij} \sim N(0, \sigma^2)\)</span></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> nlme<span class="sc">::</span><span class="fu">lme</span>(</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  spec.fo <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> prt.f <span class="sc">+</span> age.f <span class="sc">+</span> sex.f <span class="sc">+</span> bmi <span class="sc">+</span> occ.f,</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">random =</span> <span class="sc">~</span> <span class="dv">1</span><span class="sc">|</span>id,</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> dados</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Linear mixed-effects model fit by REML
+  Data: dados 
+       AIC      BIC    logLik
+  11187.58 11228.07 -5585.789
+
+Random effects:
+ Formula: ~1 | id
+        (Intercept) Residual
+StdDev:    13.56403 27.49065
+
+Fixed effects:  spec.fo ~ 1 + prt.f + age.f + sex.f + bmi + occ.f 
+                Value Std.Error   DF   t-value p-value
+(Intercept) 149.46213 15.432129 1108  9.685127  0.0000
+prt.fLow     -1.61267  3.847214   58 -0.419179  0.6766
+age.fOld      6.96845  3.877306   58  1.797240  0.0775
+sex.fMale    -4.37663  3.864605   58 -1.132491  0.2621
+bmi           0.60780  0.589132   58  1.031689  0.3065
+occ.fPos      8.50944  1.661194 1108  5.122487  0.0000
+ Correlation: 
+          (Intr) prt.fL ag.fOl sx.fMl bmi   
+prt.fLow  -0.193                            
+age.fOld  -0.242  0.013                     
+sex.fMale -0.028 -0.044 -0.006              
+bmi       -0.966  0.072  0.106 -0.085       
+occ.fPos  -0.058  0.003  0.031  0.011 -0.005
+
+Standardized Within-Group Residuals:
+        Min          Q1         Med          Q3         Max 
+-3.03668536 -0.65887912 -0.03786059  0.61449852  3.98073017 
+
+Number of Observations: 1172
+Number of Groups: 63 </code></pre>
+</div>
+</div>
+<p>A variância dos efeitos aleatórios é alta, o que indica que de fato o modelo misto é adequado.</p>
+<p>Observamos também que há baixa correlação entre os efeitos fixos, o que descarta uma possível multicolinearidade.</p>
+<p>No entanto, não parece haver efeito significante da variável de interesse <code>prt.f</code> (intensidade do treinameto) na variável resposta (<code>spec.fo</code>), mas sim da ocasião em que o treino ocorre (<code>occ.f</code>).</p>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

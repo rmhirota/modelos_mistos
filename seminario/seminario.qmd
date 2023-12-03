@@ -1,0 +1,22 @@
+---
+title: "Diagnóstico de modelos mistos"
+subtitle: "MAE5896 - Modelos Mistos e suas Aplicações - 2023"
+format: revealjs
+---
+
+## Introdução
+
+## Artigos
+
+- Isabel Molina, Ayoub Saei, M. José Lombardía, Small Area Estimates of Labour Force Participation Under a Multinomial Logit Mixed Model, Journal of the Royal Statistical Society Series A: Statistics in Society, Volume 170, Issue 4, October 2007, Pages 975–1000, [https://doi.org/10.1111/j.1467-985X.2007.00493.x](https://doi.org/10.1111/j.1467-985X.2007.00493.x)
+- Schielzeth, H, Dingemanse, NJ, Nakagawa, S, et al. Robustness of linear mixed-effects models to violations of distributional assumptions. Methods Ecol Evol. 2020; 11: 1141–1152. [https://doi.org/10.1111/2041-210X.13434](https://doi.org/10.1111/2041-210X.13434) 
+
+## Diagnóstico de modelos mistos
+
+## Análise de resíduos
+
+## Desafios
+
+## Conclusão
+
+
