@@ -1,17 +1,41 @@
 ---
 title: "Diagnóstico de modelos mistos"
 subtitle: "MAE5896 - Modelos Mistos e suas Aplicações - 2023"
-format: revealjs
+format: 
+  revealjs:
+    theme: solarized
+
 ---
 
 ## Introdução
 
-## Artigos
+### Artigo
 
-- Isabel Molina, Ayoub Saei, M. José Lombardía, Small Area Estimates of Labour Force Participation Under a Multinomial Logit Mixed Model, Journal of the Royal Statistical Society Series A: Statistics in Society, Volume 170, Issue 4, October 2007, Pages 975–1000, [https://doi.org/10.1111/j.1467-985X.2007.00493.x](https://doi.org/10.1111/j.1467-985X.2007.00493.x)
-- Schielzeth, H, Dingemanse, NJ, Nakagawa, S, et al. Robustness of linear mixed-effects models to violations of distributional assumptions. Methods Ecol Evol. 2020; 11: 1141–1152. [https://doi.org/10.1111/2041-210X.13434](https://doi.org/10.1111/2041-210X.13434) 
+Isabel Molina, Ayoub Saei, M. José Lombardía, Small Area Estimates of Labour Force Participation Under a Multinomial Logit Mixed Model. [https://doi.org/10.1111/j.1467-985X.2007.00493.x](https://doi.org/10.1111/j.1467-985X.2007.00493.x)
+
+### Objetivo
+
+Desenvolver uma nova metodologia para estimar características de desemprego ou emprego em áreas pequenas.
+
+## Variáveis 
+
+::: {style="font-size: 60%;"}
+| Variable            | Descrição                                                                                 |
+|---------------------|---------------------------------------------------------------------------------------------|
+| AREA                | Autoridade unitária ou distrito de autoridade local: 1–406                                 |
+| SEXAGE              | Categorias de sexo e idade: 1–6 (idade, [16,25], (25,40] e >40 anos; homens, 1, 2, 3; mulheres, 4, 5, 6) |
+| GOR                 | Região do escritório governamental: 1–12                                                     |
+| CLUSTER             | Classificação socioeconômica: 1–7 (1, áreas rurais; 2, periferia urbana; 3, costa e serviços; 4, Inglaterra próspera; 5, mineração, manufatura e indústria; 6, centros educacionais e exterior de Londres; 7, interior de Londres) |
+| SAMP.UNEMPLOYED    | Total de indivíduos desempregados na amostra no grupo AREA–SEXAGE                            |
+| SAMP.EMPLOYED      | Total de indivíduos empregados na amostra no grupo AREA–SEXAGE                              |
+| SAMP.INACTIVE      | Total de indivíduos inativos na amostra no grupo AREA–SEXAGE                               |
+| REG.UNEMPLOYED     | Total de indivíduos registrados em um escritório de desemprego no grupo AREA–SEXAGE         |
+| TOTAL              | Número total de indivíduos no grupo AREA–SEXAGE                                            |
+:::
 
 ## Diagnóstico de modelos mistos
+
+Diagnóstico
 
 ## Análise de resíduos
 
