@@ -92,6 +92,16 @@ $$
 
 ## Simulação
 
+Experimento de simulação com dois objetivos principais:
+
+- Comparação de taxas de desemprego estimadas pelo modelo misto logit multinomial com aquelas obtidas pelo modelo logit misto univariado para desempregados
+- Comparação de desempenho de duas estimativas diferentes do erro quadrático médio propostas
+
+Os dados simulados (K = 1000 populações, D = 200 áreas) foram gerados utilizando os parâmetros ajustados para os dados reais.
+
+## Simulação
+
+![Valores empíricos do erro quadrático médio segundo os modelos multinomial e binomial](img/mse.001.jpeg)
 
 ## Conclusão
 
