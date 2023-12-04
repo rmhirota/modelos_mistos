@@ -9,9 +9,7 @@ format:
 
 ## Introdução
 
-### Artigo
-
-Isabel Molina, Ayoub Saei, M. José Lombardía, Small Area Estimates of Labour Force Participation Under a Multinomial Logit Mixed Model. [https://doi.org/10.1111/j.1467-985X.2007.00493.x](https://doi.org/10.1111/j.1467-985X.2007.00493.x)
+Isabel Molina, Ayoub Saei, M. José Lombardía, Small Area Estimates of Labour Force Participation Under a Multinomial Logit Mixed Model. Journal of the Royal Statistical Society Series A: Statistics in Society, Volume 170, Issue 4, October 2007, Pages 975–1000[https://doi.org/10.1111/j.1467-985X.2007.00493.x](https://doi.org/10.1111/j.1467-985X.2007.00493.x)
 
 ### Objetivo
 
