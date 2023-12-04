@@ -101,6 +101,8 @@ $j=1,2 \qquad i = 1,\dots ,6 \qquad d = 1,\dots,406, u_d \stackrel{iid}{\sim} N(
 
 ## Estimativa de pequenas áreas das características do emprego
 
+![Estimativas baseadas em modelos dos totais de (a) desempregados e (b) empregados versus as estimativas diretas correspondentes para cada área](img/fig7.png)
+
 ![Razão entre os coeficientes de variação das estimativas diretas sobre as estimativas baseadas em modelos dos totais de (a) desempregados e (b) empregados para cada área](img/fig8.png)
 
 ## Simulação
