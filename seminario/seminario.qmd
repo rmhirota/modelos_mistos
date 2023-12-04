@@ -83,6 +83,12 @@ $$
 
 ## Diagnóstico do modelo
 
+::: {style="font-size: 60%;"}
+| Modelo                  | Log probabilidade | BIC                  |
+|-------------------------|------------------------------------------|
+| Modelo linear (6)       | −3055,9           | 6306,8               |
+| Modelo linear misto (5) | −3050,2           | 6303.1               |
+:::
 
 ## Simulação
 
