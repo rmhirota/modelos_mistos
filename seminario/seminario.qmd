@@ -122,8 +122,8 @@ $j=1,2 \qquad i = 1,\dots ,6 \qquad d = 1,\dots,406, u_d \stackrel{iid}{\sim} N(
 Outra alternativa para o cálculo do erro é a reamostragem.
 
 - Jackknife (Jiang et al., 2002)
-- Boostrap paramétrico e não paramétrico (Pfeffermann e Tiller, 2005)
-- Bootsrap para EQM em populações finitas (González-Manteiga et al., 2007)
+- Bootstrap paramétrico e não paramétrico (Pfeffermann e Tiller, 2005)
+- Bootstrap para EQM em populações finitas (González-Manteiga et al., 2007)
 
 
 ## Simulação
