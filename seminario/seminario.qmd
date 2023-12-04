@@ -4,7 +4,6 @@ subtitle: "MAE5896 - Modelos Mistos e suas Aplicações - 2023"
 format: 
   revealjs:
     theme: solarized
-
 ---
 
 ## Introdução
@@ -17,10 +16,26 @@ Isabel Molina, Ayoub Saei, M. José Lombardía, Small Area Estimates of Labour F
 
 Desenvolver uma nova metodologia para estimar características de desemprego ou emprego em áreas pequenas.
 
+## Motivação
+
+- O Eurostat exige dos países-membros informações estatísticas cada vez mais detalhadas sobre regiões geográficas menores;
+- Por uma questão de custo, os estudos nacionais não são planejados para oferecer estimativas diretas precisas nesses pequenos domínios.
+
+## Motivação
+
+- Segundo o Serviço de Estatísticas Nacionais do Reino Unido, estimativas só são publicadas se tiverem um coeficiente de variação de até 20%;
+- Para o ano de 2000, somente 75 das 406 estimativas diretas poderiam ser publicadas!
+
+## Motivação
+
+- Nesse artigo, os autores estudam métodos para obter estimativas mais precisas para os índices de desemprego, emprego e inatividade no Reino Unido;
+- Intuitivamente, a ideia é aproximar as estimativas de distritos que sejam parecidos por meio de um modelo de regressão;
+- As estimativas serão viesadas, porém suas variâncias pode ser substancialmente menor.
+
 ## Variáveis 
 
 ::: {style="font-size: 60%;"}
-| Variable            | Descrição                                                                                 |
+| Variável            | Descrição                                                                                 |
 |---------------------|---------------------------------------------------------------------------------------------|
 | AREA                | Autoridade unitária ou distrito de autoridade local: 1–406                                 |
 | SEXAGE              | Categorias de sexo e idade: 1–6 (idade, [16,25], (25,40] e >40 anos; homens, 1, 2, 3; mulheres, 4, 5, 6) |
@@ -60,8 +75,6 @@ $$
 - $u_d$ denota o efeito aleatório da área $d$.
 
 ## Diagnóstico de modelos mistos
-
-Diagnóstico
 
 ## Análise de resíduos
 
