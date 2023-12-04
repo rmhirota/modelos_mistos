@@ -1,5 +1,5 @@
 ---
-title: "Diagnóstico de modelos mistos"
+title: "Estimação de pequenos domínios com modelo misto multinomial"
 subtitle: "MAE5896 - Modelos Mistos e suas Aplicações - 2023"
 format: 
   revealjs:
