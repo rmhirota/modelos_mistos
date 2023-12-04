@@ -33,6 +33,32 @@ Desenvolver uma nova metodologia para estimar características de desemprego ou 
 | TOTAL              | Número total de indivíduos no grupo AREA–SEXAGE                                            |
 :::
 
+## Modelo
+
+Modelo logit multinomial com efeitos aleatórios de _área_.
+
+$$
+f(y_{di1}, y_{di2} \mid u_d) = \frac{m_{di}!}{y_{di1}! \cdot y_{di2}! \cdot y_{di3}!} \cdot p_{di1}^{y_{di1}} \cdot p_{di2}^{y_{di2}} \cdot p_{di3}^{y_{di3}}
+$$
+
+::: {style="font-size: 60%;"}
+
+- $x_{di}$, $y_{di1}$, $y_{di2}$ e $y_{di3}$ denotam o número de desempregados, empregados e inativos amostrados, respectivamente.
+- $m_{di} = y_{di1} + y_{di2} + y_{di3}$ representa o tamanho da amostra.
+- $p_{di1}, p_{di2}, p_{di3} = 1 − p_{di1} − p_{di2}$ são as probabilidades respectivas de indivíduos desempregados, empregados e inativos.
+
+:::
+
+## Variáveis explicativas
+
+- Log-proporção de REG.UNEMPLOYED.
+- 22 indicadores (dummy) para categorias de GOR, CLUSTER e SEXAGE, com a última categoria de cada uma como referência base.
+- Matriz de incidência construída ($X$):
+  - Possui 24 colunas, incluindo um intercepto.
+  - Indexada por $i = 1,…,6$ para a categoria SEXAGE e $d = 1,…,406$ para AREA.
+
+- $u_d$ denota o efeito aleatório da área $d$.
+
 ## Diagnóstico de modelos mistos
 
 Diagnóstico
