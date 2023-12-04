@@ -83,6 +83,14 @@ $$
 
 ## Diagnóstico do modelo
 
+![Resíduos em relação aos valores previstos para os empregados](img/fig5.png)
+
+##
+
+![Resíduos em relação aos valores previstos para os desempregados](img/fig6.png)
+
+##
+
 | Modelo                  | Log probabilidade | BIC                  |
 |-------------------------|------------------------------------------|
 | Modelo linear (6)       | −3055,9           | 6306,8               |
