@@ -81,11 +81,11 @@ $$
 
 - $u_d$ denota o efeito aleatório da área $d$.
 
-## Diagnóstico de modelos mistos
+## Diagnóstico do modelo
 
-## Análise de resíduos
 
-## Desafios
+## Simulação
+
 
 ## Conclusão
 
