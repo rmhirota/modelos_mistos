@@ -105,6 +105,27 @@ $j=1,2 \qquad i = 1,\dots ,6 \qquad d = 1,\dots,406, u_d \stackrel{iid}{\sim} N(
 
 ![Razão entre os coeficientes de variação das estimativas diretas sobre as estimativas baseadas em modelos dos totais de (a) desempregados e (b) empregados para cada área](img/fig8.png)
 
+## Erro quadrático médio
+
+- A não linearidade do modelo dificulta o cálculo de uma expressão analítica para o erro quadrático médio
+- A não linearidade dos estimadores nas estimativas de efeitos fixos e aleatórios representa outra complicação
+- A presença de correlação entre os estimadores também aumenta a complexidade do problema
+
+## Erro quadrático médio
+
+- Expressões analíticas para o erro quadrático médio de estimadores de pequenas áreas estão disponíveis apenas para modelos mistos lineares
+- Essas expressões são aplicáveis quando os estimadores são funções lineares de $\beta$ e $u$ (Prasad e Rao, 1990)
+- O EML da variância dos efeitos aleatórios baseia-se em uma aproximação do modelo por um modelo misto linear. A utilização dessa aproximação com uma expansão em série de Taylor para linearizar as estimativas permite a aplicação dos resultados de Prasad and Rao, devidamente adaptados a um contexto multivariado.
+
+## Erro quadrático médio
+
+Outra alternativa para o cálculo do erro é a reamostragem.
+
+- Jackknife (Jiang et al., 2002)
+- Boostrap paramétrico e não paramétrico (Pfeffermann e Tiller, 2005)
+- Bootsrap para EQM em populações finitas (González-Manteiga et al., 2007)
+
+
 ## Simulação
 
 Experimento de simulação com dois objetivos principais:

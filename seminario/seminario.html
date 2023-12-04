@@ -481,8 +481,44 @@ f(y_{di1}, y_{di2} \mid u_d) = \frac{m_{di}!}{y_{di1}! \cdot y_{di2}! \cdot y_{d
 </section>
 <section id="estimativa-de-pequenas-áreas-das-características-do-emprego" class="slide level2">
 <h2>Estimativa de pequenas áreas das características do emprego</h2>
-
-<img data-src="img/fig8.png" class="r-stretch quarto-figure-center"><p class="caption">Razão entre os coeficientes de variação das estimativas diretas sobre as estimativas baseadas em modelos dos totais de (a) desempregados e (b) empregados para cada área</p></section>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="img/fig7.png"></p>
+<p></p><figcaption>Estimativas baseadas em modelos dos totais de (a) desempregados e (b) empregados versus as estimativas diretas correspondentes para cada área</figcaption><p></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="img/fig8.png"></p>
+<p></p><figcaption>Razão entre os coeficientes de variação das estimativas diretas sobre as estimativas baseadas em modelos dos totais de (a) desempregados e (b) empregados para cada área</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="erro-quadrático-médio" class="slide level2">
+<h2>Erro quadrático médio</h2>
+<ul>
+<li>A não linearidade do modelo dificulta o cálculo de uma expressão analítica para o erro quadrático médio</li>
+<li>A não linearidade dos estimadores nas estimativas de efeitos fixos e aleatórios representa outra complicação</li>
+<li>A presença de correlação entre os estimadores também aumenta a complexidade do problema</li>
+</ul>
+</section>
+<section id="erro-quadrático-médio-1" class="slide level2">
+<h2>Erro quadrático médio</h2>
+<ul>
+<li>Expressões analíticas para o erro quadrático médio de estimadores de pequenas áreas estão disponíveis apenas para modelos mistos lineares</li>
+<li>Essas expressões são aplicáveis quando os estimadores são funções lineares de <span class="math inline">\(\beta\)</span> e <span class="math inline">\(u\)</span> (Prasad e Rao, 1990)</li>
+<li>O EML da variância dos efeitos aleatórios baseia-se em uma aproximação do modelo por um modelo misto linear. A utilização dessa aproximação com uma expansão em série de Taylor para linearizar as estimativas permite a aplicação dos resultados de Prasad and Rao, devidamente adaptados a um contexto multivariado.</li>
+</ul>
+</section>
+<section id="erro-quadrático-médio-2" class="slide level2">
+<h2>Erro quadrático médio</h2>
+<p>Outra alternativa para o cálculo do erro é a reamostragem.</p>
+<ul>
+<li>Jackknife (Jiang et al., 2002)</li>
+<li>Boostrap paramétrico e não paramétrico (Pfeffermann e Tiller, 2005)</li>
+<li>Bootsrap para EQM em populações finitas (González-Manteiga et al., 2007)</li>
+</ul>
+</section>
 <section id="simulação" class="slide level2">
 <h2>Simulação</h2>
 <p>Experimento de simulação com dois objetivos principais:</p>
