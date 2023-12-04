@@ -90,6 +90,10 @@ $$
 | Modelo linear misto (5) | −3050,2           | 6303.1               |
 :::
 
+## Estimativa de pequenas áreas das características do emprego
+
+![Razão entre os coeficientes de variação das estimativas diretas sobre as estimativas baseadas em modelos dos totais de (a) desempregados e (b) empregados para cada área](img/fig8.png)
+
 ## Simulação
 
 Experimento de simulação com dois objetivos principais:
