@@ -1,0 +1,54 @@
+---
+title: "Avaliação do Laser Não Ablativo Er:YAG no Rejuvenescimento Facial e na Redução de Marcas: Um Estudo Clínico"
+format: pdf
+---
+
+
+## Introdução
+
+Este estudo visa avaliar os efeitos do laser não ablativo Er:YAG no
+rejuvenescimento da pele e na diminuição de marcas faciais. Vinte e seis
+participantes adultos, com idades entre 35 e 80 anos, foram aleatoriamente
+distribuídos em um grupo controle e três grupos experimentais, nos quais o laser
+foi aplicado com densidades variáveis (7J/cm2, 8J/cm2 e 9J/cm2). Exceto no grupo
+controle, os participantes foram submetidos a três sessões semanais de aplicação
+de laser, durante as quais foram registradas medidas faciais, incluindo a
+mensuração do comprimento do sulco lábio-geniano antes e depois de cada
+aplicação.
+
+## Variáveis de interesse
+
+- Idade (anos)
+- Sexo: Masculino ou Feminino
+- Grupo: Controle, 7J/cm2, 8J/cm2 e 9J/cm2
+- Etapa: (Pós-Sessões, 1 mês ou 3 meses)
+- Diabetes: Sim ou Não
+- Hipertensão: Sim ou Não
+- Fumante: Sim ou Não
+- Medidas do paciente (em milímetros)
+  - Lábio superior central (LABIO_SUPERIOR)
+  - Lábio inferior (LABIO_INFERIOR)
+  - Sulco lábio-geniano direito (SULCO_LG_D)
+  - Sulco lábio-geniano esquerdo (SULCO_LG_E)
+
+### Dados
+
+```{r}
+dados <- readxl::read_xlsx("p2/prova.xlsx")
+dplyr::glimpse(dados)
+
+dados |>
+  dplyr::count(SESSAO)
+```
+
+
+
+## Metodologia
+
+## Resultados
+
+## Discussão
+
+## Conclusão
+
+## Referências

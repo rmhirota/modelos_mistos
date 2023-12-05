@@ -1,0 +1,84 @@
+---
+title: "Modelos Mistos e Aplicações - Lista 3"
+subtitle: "Renata Hirota"
+format: pdf
+execute:
+  echo: false
+---
+
+## Estudo sobre esquizofrenia
+
+Neste estudo sobre esquizofrenia, foram analisados 437 pacientes ao longo de 6
+semanas em que foram tratados com algum tipo de droga (Chlorpromazine,
+Fluphenazine, ou Thioridazine) ou Placebo.
+
+Os pacientes foram classificados em relação à severidade da doença na escala
+IMPS-79 (variável `imps79`):
+
+- 1: normal
+- 2: ao limite de estar mentalmente doente
+- 3: levemente doente
+- 4: moderadamente doente
+- 5: marcadamente doente
+- 6: severamente doente
+- 7: entre os mais gravemente doentes
+- -9: observações desaparecidas
+
+Essas classificações foram categorizadas em duas faixas (variável `imps79b`):
+
+- 0: levemente doente
+- 1: consideravelmente doente
+
+Neste relatório, vamos ajustar um modelo misto para analisar a probabilidade de
+um paciente estar consideravelmente doente ao longo do tempo, considerando a
+interação entre tempo e tratamento.
+
+### Variáveis
+
+Neste estudo, vamos utilizar as seguintes variáveis:
+
+| variável  | descrição                                                                             |
+| --------- | ------------------------------------------------------------------------------------- |
+| id        | Código identidicador do paciente                                                      |
+| imps79b   | Grau de severidade da doença (0 = levemente doente; 1 = consideravelmente doente)     |
+| tx        | Tratamento (0 = placebo; 1 = droga)                                                   |
+| week      | Semana de observação                                                                  |
+| sweek     | Raiz quadrada da semana se observação                                                 |
+
+### Dados
+
+```{r}
+dados <- readr::read_table("SCHI.txt", show_col_types = FALSE)
+dados_sem_na <- dados |>
+  dplyr::filter(imps79b != -9) |>
+  dplyr::mutate(imps79b = as.factor(imps79b))
+```
+
+Foram coletadas 7 observações dos 437 indivíduos, uma a cada semana, totalizando
+3059 observações. Destas, 1456 são desconhecidas (`imps79b` = -9).
+
+```{r}
+dados |>
+  dplyr::count(tx, imps79b) |>
+  ggplot2::ggplot(ggplot2::aes(x = imps79b, y = n)) +
+  ggplot2::geom_col() +
+  ggplot2::facet_wrap(~tx)
+```
+
+
+```{r}
+#| label: modelo
+library(multilevelmod)
+lmer_spec <- parsnip::logistic_reg() |>
+  parsnip::set_engine("glmer")
+
+dados_sem_na <- dados |>
+  dplyr::filter(imps79b != -9) |>
+  dplyr::mutate(imps79b = as.factor(imps79b)) 
+
+fit <- lme4::glmer(imps79b ~ tx + week + tx * week + (1|id), data = dados_sem_na, family = binomial)
+summary(fit)
+
+    
+
+```
