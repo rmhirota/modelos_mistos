@@ -6,7 +6,7 @@ execute:
   echo: false
 ---
 
-## Estudo sobre esquizofrenia
+# 1. Estudo sobre esquizofrenia
 
 Neste estudo sobre esquizofrenia, foram analisados 437 pacientes ao longo de 6
 semanas em que foram tratados com algum tipo de droga (Chlorpromazine,
@@ -33,7 +33,7 @@ Neste relatório, vamos ajustar um modelo misto para analisar a probabilidade de
 um paciente estar consideravelmente doente ao longo do tempo, considerando a
 interação entre tempo e tratamento.
 
-### Variáveis
+## Variáveis
 
 Neste estudo, vamos utilizar as seguintes variáveis:
 
@@ -43,9 +43,9 @@ Neste estudo, vamos utilizar as seguintes variáveis:
 | imps79b   | Grau de severidade da doença (0 = levemente doente; 1 = consideravelmente doente)     |
 | tx        | Tratamento (0 = placebo; 1 = droga)                                                   |
 | week      | Semana de observação                                                                  |
-| sweek     | Raiz quadrada da semana se observação                                                 |
+| sweek     | Raiz quadrada da semana de observação                                                 |
 
-### Dados
+## Dados
 
 ```{r}
 dados <- readr::read_table("SCHI.txt", show_col_types = FALSE)
@@ -58,27 +58,223 @@ Foram coletadas 7 observações dos 437 indivíduos, uma a cada semana, totaliza
 3059 observações. Destas, 1456 são desconhecidas (`imps79b` = -9).
 
 ```{r}
-dados |>
-  dplyr::count(tx, imps79b) |>
-  ggplot2::ggplot(ggplot2::aes(x = imps79b, y = n)) +
+dados_sem_na |>
+  dplyr::count(week, tx, imps79b) |>
+  dplyr::mutate(tx = as.factor(tx)) |>
+  ggplot2::ggplot(ggplot2::aes(x = week, y = n, fill = tx)) +
   ggplot2::geom_col() +
-  ggplot2::facet_wrap(~tx)
+  ggplot2::facet_wrap(
+    ~imps79b, 
+    labeller = ggplot2::as_labeller(c(
+      "0" = "Levemente doente", 
+      "1" = "Consideravelmente doente"))
+  ) +
+  ggplot2::labs(
+    fill = "Tratamento",
+    x = "Semana",
+    y = "N Pacientes"
+  )
 ```
+
+É possível verificar pelo gráfico que a quantidade de pacientes
+consideravelmente doentes diminui ao longo das semanas de forma geral, o que
+pode indicar uma influência da semana na severidade da doença. Isso poderá ser
+verificado no modelo, descrito a seguir.
+ 
+
+$$ \begin{aligned} \text{logit}(P(\text{imps79b} = 1)) &= \beta_0 + \beta_1
+\cdot \text{tx} + \beta_2 \cdot \text{sweek} + \beta_3 \cdot \text{tx:sweek} +
+u_{\text{id}} + \varepsilon \\
+\end{aligned} $$
+
+onde,
+
+$$ \begin{aligned} \text{logit}(p) & = \log\left(\frac{p}{1-p}\right) \quad
+\text{Função logit} \\
+P(\text{imps79b} = 1) & = \text{Probabilidade de estar consideravelmente doente}
+\\
+\beta_0 & = \text{Intercepto} \\
+\beta_1 & = \text{Coeficiente para a variável de tratamento (\text{tx})} \\
+\beta_2 & = \text{Coeficiente para a variável de raiz quadrada da semana
+(\text{sweek})} \\
+\beta_3 & = \text{Coeficiente para a interação entre tratamento e semana
+(\text{tx:sweek})} \\
+u_{\text{id}} & = \text{Efeito aleatório de id} \\
+\varepsilon & = \text{Erro residual} \end{aligned} $$
+
+Além disso, o modelo inclui os seguintes parâmetros de variância para os efeitos
+aleatórios:
+
+$$ \text{Var}(u_{\text{id}}) = \sigma^2_{\text{id}} \quad \text{Variância de id}
+$$
+
 
 
 ```{r}
 #| label: modelo
-library(multilevelmod)
-lmer_spec <- parsnip::logistic_reg() |>
-  parsnip::set_engine("glmer")
 
-dados_sem_na <- dados |>
-  dplyr::filter(imps79b != -9) |>
-  dplyr::mutate(imps79b = as.factor(imps79b)) 
-
-fit <- lme4::glmer(imps79b ~ tx + week + tx * week + (1|id), data = dados_sem_na, family = binomial)
-summary(fit)
-
-    
+modelo <- lme4::glmer(imps79b ~ tx * sweek + (1|id), data = dados_sem_na, family = binomial)
+summary(modelo)
 
 ```
+
+## Resultados
+
+### Tratamento (`tx`)
+
+A estimativa para o tratamento (`tx`) é -0.01603, mas não é estatisticamente
+significativa. Isso sugere que, isoladamente, o tratamento não tem um efeito
+significativo na probabilidade de uma pessoa estar consideravelmente doente.
+Pode ser que o efeito do tratamento seja modulado por outras variáveis, como o
+tempo.
+
+### Raiz Quadrada da Semana (`sweek`)
+
+A variável `sweek` tem uma estimativa significativa de -1.43553. Isso indica
+que, mantendo todas as outras variáveis constantes, à medida que a raiz quadrada
+da semana aumenta, a probabilidade de estar consideravelmente doente diminui.
+
+### Interação entre Tratamento e Semana (`tx:sweek`)
+
+A interação entre tratamento e semana tem uma estimativa significativa de
+-1.03903. Isso sugere que o efeito do tratamento na probabilidade de estar
+consideravelmente doente varia com o tempo, ou seja, pode indicar que o
+tratamento tem um impacto diferente em semanas diferentes.
+
+### Correlações de Efeitos Fixos
+
+As correlações entre os efeitos fixos indicam como as variáveis estão
+relacionadas. Por exemplo, a correlação negativa (-0.770) entre `tx` e `sweek`
+sugere uma relação inversa entre tratamento e a raiz quadrada da semana.
+
+Em resumo, o modelo sugere que o tempo (representado pela raiz quadrada da
+semana) tem um efeito significativo na probabilidade de uma pessoa estar
+consideravelmente doente. Além disso, o tratamento pode ter um impacto, mas esse
+impacto parece ser modulado pela passagem do tempo, como indicado pela interação
+significativa entre tratamento e semana. Este resultado destaca a importância de
+considerar a dinâmica temporal ao avaliar o efeito de tratamentos de
+esquizofrenia.
+
+# 2. Estudo com filhotes de coruja
+
+O estudo investiga a interação entre filhotes de coruja durante a ausência dos
+pais. Utilizando câmeras e microfones, foram registradas, a cada 15 minutos, as
+chamadas feitas pelos filhotes. Durante as visitas dos pais, o número de
+chamadas dos 15 minutos anteriores foi registrado e dividido pelo número de
+filhotes em cada ninho. As variáveis incluem o sexo dos pais, o tratamento
+alimentar (presas extras ou remoção das presas) e o tempo de chegada do pai. O
+tratamento alimentar foi alternado na segunda noite do estudo. O objetivo é
+entender como esses fatores afetam a dinâmica vocal dos filhotes, explorando
+padrões temporais e relações entre as variáveis.
+
+## Variáveis
+
+```{r}
+owls <- readr::read_table("Owls.txt", show_col_types = FALSE)
+```
+
+| Variável            | Descrição                                             |
+|---------------------|------------------------------------------------------ |
+| Nest                | Ninho                                                 |
+| FoodTreatment       | Indicação se os ninhos receberam presas extras ("Satiated") ou tiveram as presas removidas ("Deprived")                                                   |
+| SexParent           | Indicação do sexo dos pais das corujas                |
+| ArrivalTime         | Registro do tempo de chegada do pai                   |
+| NegPerChick         | Contagem de chamadas feitas por filhotes              |
+
+Vamos considerar o efeito aleatório do ninho (`Nest`) no modelo a ser ajustado.
+
+Dada a natureza repetida das medições (duas noites em cada caso), a presença de
+múltiplos ninhos e a troca de tratamento alimentar, um modelo misto é
+apropriado. Vamos utilizar o sexo dos pais, o tratamento alimentar e o tempo de
+chegada do pai como variáveis explicativas.
+
+Vamos considerar um modelo misto com efeitos fixos para o sexo dos pais,
+tratamento alimentar e tempo de chegada do pai, e efeito aleatório para os
+ninhos (considerando a repetição das observações). A variável resposta pode ser
+o número de chamadas ou a razão de chamadas por filhote.
+
+$$ \text{RazaoChamadas}_{ij} = \beta_0 + \beta_{\text{Sexo}} \cdot \text{Sexo}_i
++ \beta_{\text{Tratamento}} \cdot \text{Tratamento}_i +
+\beta_{\text{TempoChegada}} \cdot \text{TempoChegada}_i + u_i + \varepsilon_{ij}
+$$
+
+onde
+
+$$ \begin{aligned} \beta_0 & : \text{Intercepto} \\
+\beta_{\text{Sexo}} & : \text{Coeficiente para a variável de sexo dos pais} \\
+\beta_{\text{Tratamento}} & : \text{Coeficiente para a variável de tratamento
+alimentar} \\
+\beta_{\text{TempoChegada}} & : \text{Coeficiente para a variável de tempo de
+chegada do pai} \\
+u_i & \sim \text{Normal}(0, \sigma^2_u) : \text{Efeito aleatório do ninho} \\
+\varepsilon_{ij} & \sim \text{Normal}(0, \sigma^2) : \text{Erro residual}
+\end{aligned} $$
+
+- $\beta_{\text{Sexo}}, \beta_{\text{Tratamento}}, \beta_{\text{TempoChegada}}$
+  representam o efeito médio das variáveis fixas na razão de chamadas por
+  filhote, considerando todos os ninhos.
+- $u_i$ representa a variabilidade entre os ninhos que não é explicada pelas
+  variáveis fixas, capturando a aleatoriedade inerente a cada ninho.
+- A variância $\sigma^2$ representa a variabilidade não explicada pela estrutura
+  do modelo.
+
+```{r}
+modelo <- lme4::lmer(NegPerChick ~ SexParent + FoodTreatment + ArrivalTime + (1 | Nest), data = owls)
+summary(modelo)
+```
+
+## Resultados
+
+### Intercepto
+
+O intercepto é 6.86839, o que representa o valor estimado da razão de chamadas
+por filhote quando todas as outras variáveis explicativas são zero (ou nas
+condições de referência, se as variáveis são categóricas). Portanto, quando o
+sexo dos pais, o tratamento alimentar e o tempo de chegada do pai são zero ou
+nas condições de referência, espera-se que a razão de chamadas por filhote seja
+aproximadamente 6.87.
+
+### Sexo dos Pais (`SexParent`)
+
+O coeficiente para "SexParentMale" é 0.08019. Este coeficiente representa a
+mudança média na razão de chamadas por filhote para filhotes cujos pais são do
+sexo masculino em comparação com os pais do sexo feminino. Neste caso, o efeito
+é pequeno, indicando que não há uma diferença significativa na razão de chamadas
+entre filhotes com pais do sexo masculino e filhotes com pais do sexo feminino.
+
+### Tratamento Alimentar (`FoodTreatment`)
+
+O coeficiente para "FoodTreatmentSatiated" é -0.85689. Este coeficiente
+representa a mudança média na razão de chamadas por filhote entre ninhos
+alimentados e ninhos famintos. Um valor negativo indica que os ninhos famintos
+têm uma razão de chamadas por filhote menor do que os ninhos alimentados. Neste
+caso, há uma diferença significativa na razão de chamadas entre os dois
+tratamentos alimentares.
+
+### Tempo de Chegada do Pai (`ArrivalTime`):
+
+O coeficiente para "ArrivalTime" é -0.19813. Este coeficiente representa a
+mudança média na razão de chamadas por filhote para cada aumento de uma unidade
+no tempo de chegada do pai. Um valor negativo indica que, à medida que o tempo
+de chegada do pai aumenta, a razão de chamadas por filhote diminui. Neste caso,
+há uma associação significativa entre o tempo de chegada do pai e a razão de
+chamadas por filhote.
+
+### Variação Aleatória
+
+A variabilidade entre os ninhos é capturada pelo desvio padrão do efeito
+aleatório do ninho (Intercept), que é 0.5098. A variância residual é 1.4592,
+representando a variabilidade não explicada pelo modelo.
+
+
+### Correlação de Efeitos Fixos:
+
+A correlação entre os efeitos fixos indica se há alguma associação entre as
+variáveis explicativas. Por exemplo, a correlação entre `SexParentMale` e
+`FoodTreatmentSatiated` é -0.115, sugerindo uma fraca correlação negativa entre
+o sexo dos pais e o tratamento alimentar.
+
+Essas interpretações fornecem uma compreensão do impacto das variáveis
+explicativas na razão de chamadas por filhote, levando em conta tanto os efeitos
+fixos quanto os aleatórios do modelo misto.
+
